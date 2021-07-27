@@ -260,7 +260,6 @@ public class MatrixMultiplicationInt {
         }
 
         n = n >> 1;
-        ArrayList<Object> objects = new ArrayList<>();
 
         int[][] a11 = new int[n][n];
         int[][] a12 = new int[n][n];

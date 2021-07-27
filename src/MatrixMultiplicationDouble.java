@@ -260,7 +260,6 @@ public class MatrixMultiplicationDouble {
         }
 
         n = n >> 1;
-        ArrayList<Object> objects = new ArrayList<>();
 
         double[][] a11 = new double[n][n];
         double[][] a12 = new double[n][n];
