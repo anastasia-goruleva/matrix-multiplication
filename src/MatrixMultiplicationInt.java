@@ -491,16 +491,4 @@ public class MatrixMultiplicationInt {
         -1
         -1
     */
-    public static void main(String[] args) {
-        Multipliers multipliers = validation(args);
-
-        int[][] matrixByStrassenFJ = multiStrassenForkJoin(multipliers.getMatrixA(), multipliers.getMatrixB());
-        int[][] matrixByUsual = multiply(multipliers.getMatrixA(), multipliers.getMatrixB());
-
-        printMatrix(matrixByStrassenFJ);
-        //printMatrix(matrixByUsual);
-
-        //System.out.println(Arrays.deepEquals(matrixByStrassenFJ, matrixByUsual));
-    }
-
 }
