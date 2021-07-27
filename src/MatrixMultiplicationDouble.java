@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
@@ -372,10 +371,10 @@ public class MatrixMultiplicationDouble {
 
         //****************************************
         //	TEST 3
-            start = System.currentTimeMillis();
-            double[][] matrixByUsual = multiply(a, b);
-            end = System.currentTimeMillis();
-            System.out.printf("Usual Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
+        start = System.currentTimeMillis();
+        double[][] matrixByUsual = multiply(a, b);
+        end = System.currentTimeMillis();
+        System.out.printf("Usual Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
         //****************************************
 
         //****************************************
@@ -392,102 +391,4 @@ public class MatrixMultiplicationDouble {
 
     }
 
-    //******************************************************************************************
-
-    private static class Multipliers {
-        private final double[][] matrixA;
-        private final double[][] matrixB;
-
-        public Multipliers(double[][] a, double[][] b) {
-            matrixA = a;
-            matrixB = b;
-        }
-
-        public double[][] getMatrixB() {
-            return matrixB;
-        }
-
-        public double[][] getMatrixA() {
-            return matrixA;
-        }
-    }
-
-
-    //******************************************************************************************
-    private static Multipliers validation(String[] args) {
-        int rowsA;
-        int columnsA;
-        int rowsB;
-        int columnsB;
-
-        if (args.length < 6) {
-            throw new IllegalArgumentException("Too few parameters. Should be not less then 6.");
-        }
-
-    	/*
-         * Note: method parseInt returns NumberFormatException if the argument String
-    	 * does not contain a parsable int
-    	 * */
-
-        rowsA = Integer.parseInt(args[0]);
-        columnsA = Integer.parseInt(args[1]);
-        rowsB = Integer.parseInt(args[2]);
-        columnsB = Integer.parseInt(args[3]);
-
-        if (rowsA <= 0 || columnsA <= 0 || rowsB <= 0 || columnsB <= 0) {
-            throw new IllegalArgumentException("Array dimension can't be negative or zero");
-        }
-
-        if (args.length - (rowsA * columnsA + rowsB * columnsB) != 4) {
-            throw new IllegalArgumentException("Incorrect number of values to initialize two arrays.");
-        }
-
-        if (columnsA != rowsB) {
-            throw new IllegalArgumentException("The number of columns of the matrix A is not equal to the number of rows of the matrix B.");
-        }
-
-        double[][] a = new double[rowsA][columnsA];
-        double[][] b = new double[rowsB][columnsB];
-
-        int k = 4;
-
-        //***************************************
-
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
-                a[i][j] = Integer.parseInt(args[k++]);
-            }
-        }
-
-        //***************************************
-
-        for (int i = 0; i < b.length; i++) {
-            for (int j = 0; j < b[0].length; j++) {
-                b[i][j] = Integer.parseInt(args[k++]);
-            }
-        }
-
-        //***************************************
-
-        return new Multipliers(a, b);
-    }
-
-    //******************************************************************************************
-
-    /*
-        Матрицы подаются как аргументы программы в следующем формате
-        N M X Y A_1_1 ... A_N_M B_1_1 ... B_X_Y
-
-        где N и M - размерность первой матрицы A,
-        A_1_1 ... A_N_M - элементы матрицы A,
-        X и Y - размерность второй матрицы B,
-        B_1_1 ... B_X_Y - элементы матрицы B.
-
-        Например, для умножения единичной матрицы размером 2 на 2 на вектор (-1, -1)
-        необходимо на вход приложению пожать следующие аргументы
-        2 2 2 1 1 0 0 1 -1 -1
-        В консоль должен распечататься вектор:
-        -1
-        -1
-    */
 }
