@@ -18,7 +18,20 @@ public class StrassenRunner {
             if (!isTwoPower(size)) {
                 throw new InvalidArgumentException("Size is not power of two");
             }
-            MatrixMultiplicationInt.test(size, size, size);
+
+            switch (args[1].toLowerCase()) {
+                case "int":
+                    MatrixMultiplicationInt.test(size, size, size);
+                    break;
+
+                case "double":
+                    MatrixMultiplicationDouble.test(size, size, size);
+                    break;
+
+                default:
+                    throw new InvalidArgumentException(String.format("Algorithms are not implemented for type %s", args[1]));
+            }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
