@@ -1,5 +1,3 @@
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
@@ -180,12 +178,11 @@ public class DoubleStrassen {
     //******************************************************************************************
 
     public static double[][] multiStrassenForkJoin(double[][] a, double[][] b) {
+        int size = CommonFunctions.getNewDimension(a.length, a[0].length, b[0].length);
+        double[][] a_n = addition2SquareMatrix(a, size);
+        double[][] b_n = addition2SquareMatrix(b, size);
 
-        int nn = getNewDimension(a, b);
-        double[][] a_n = addition2SquareMatrix(a, nn);
-        double[][] b_n = addition2SquareMatrix(b, nn);
-
-        myRecursiveTask task = new myRecursiveTask(a_n, b_n, nn);
+        myRecursiveTask task = new myRecursiveTask(a_n, b_n, size);
         ForkJoinPool pool = new ForkJoinPool();
         double[][] fastFJ = pool.invoke(task);
 
@@ -233,11 +230,5 @@ public class DoubleStrassen {
         double[][] c22 = summation(subtraction(p1, p2), summation(p3, p6));
 
         return collectMatrix(c11, c12, c21, c22);
-    }
-
-    //******************************************************************************************
-
-    public static int getNewDimension(double[][] a, double[][] b) {
-        return 1 << CommonFunctions.log2(Collections.max(Arrays.asList(a.length, a[0].length, b[0].length)));
     }
 }

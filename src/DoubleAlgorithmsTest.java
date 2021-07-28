@@ -32,7 +32,6 @@ public class DoubleAlgorithmsTest {
     }
 
     public static void test(int n, int m, int l) {
-
         double[][] a = randomMatrix(n, l);
         double[][] b = randomMatrix(l, m);
         long start, end;
@@ -48,12 +47,12 @@ public class DoubleAlgorithmsTest {
         //****************************************
         //	TEST 2
         start = System.currentTimeMillis();
-        int nn = DoubleStrassen.getNewDimension(a, b);
+        int size = CommonFunctions.getNewDimension(n, l, m);
 
-        double[][] a_n = DoubleStrassen.addition2SquareMatrix(a, nn);
-        double[][] b_n = DoubleStrassen.addition2SquareMatrix(b, nn);
+        double[][] a_n = DoubleStrassen.addition2SquareMatrix(a, size);
+        double[][] b_n = DoubleStrassen.addition2SquareMatrix(b, size);
 
-        double[][] temp = DoubleStrassen.multiStrassen(a_n, b_n, nn);
+        double[][] temp = DoubleStrassen.multiStrassen(a_n, b_n, size);
         double[][] matrixByStrassen = DoubleStrassen.getSubmatrix(temp, n, m);
         end = System.currentTimeMillis();
         System.out.printf("Strassen Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);

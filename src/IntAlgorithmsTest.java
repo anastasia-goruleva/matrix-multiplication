@@ -49,12 +49,12 @@ public class IntAlgorithmsTest {
         //****************************************
         //	TEST 2
         start = System.currentTimeMillis();
-        int nn = IntStrassen.getNewDimension(a, b);
+        int size = CommonFunctions.getNewDimension(n, l, m);
 
-        int[][] a_n = IntStrassen.addition2SquareMatrix(a, nn);
-        int[][] b_n = IntStrassen.addition2SquareMatrix(b, nn);
+        int[][] a_n = IntStrassen.addition2SquareMatrix(a, size);
+        int[][] b_n = IntStrassen.addition2SquareMatrix(b, size);
 
-        int[][] temp = IntStrassen.multiStrassen(a_n, b_n, nn);
+        int[][] temp = IntStrassen.multiStrassen(a_n, b_n, size);
         int[][] matrixByStrassen = IntStrassen.getSubmatrix(temp, n, m);
         end = System.currentTimeMillis();
         System.out.printf("Strassen Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
