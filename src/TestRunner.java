@@ -29,11 +29,16 @@ public class TestRunner {
                     break;
 
                 default:
-                    throw new InvalidArgumentException(String.format("Algorithms are not implemented for type %s", args[1]));
+                    throw new InvalidArgumentException(String.format("Algorithms are not implemented for type %s, " +
+                                    "type have to be int or double",
+                            args[1]));
             }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Usage TestRunner <size> <type>");
+        } catch (NumberFormatException e) {
+            System.out.println("Matrix size has to be integer number");
+        } catch (InvalidArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
