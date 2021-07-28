@@ -125,7 +125,7 @@ public class DoubleStrassen {
         @Override
         protected double[][] compute() {
             if (n <= 128) {
-                return MatrixMultiplicationDouble.multiplyTransposed(a, b);
+                return DoubleMatrixMultiplication.multiplyTransposed(a, b);
             }
 
             n >>= 1;
@@ -201,7 +201,7 @@ public class DoubleStrassen {
      * */
     public static double[][] multiStrassen(double[][] a, double[][] b, int n) {
         if (n <= 128) {
-            return MatrixMultiplicationDouble.multiplyTransposed(a, b);
+            return DoubleMatrixMultiplication.multiplyTransposed(a, b);
         }
 
         n = n >> 1;

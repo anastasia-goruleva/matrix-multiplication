@@ -63,7 +63,7 @@ public class IntAlgorithmsTest {
         //****************************************
         //	TEST 3
         start = System.currentTimeMillis();
-        int[][] matrixByUsual = MatrixMultiplicationInt.multiply(a, b);
+        int[][] matrixByUsual = IntMatrixMultiplication.multiply(a, b);
         end = System.currentTimeMillis();
         System.out.printf("Usual Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
         //****************************************
@@ -71,7 +71,7 @@ public class IntAlgorithmsTest {
         //****************************************
         //	TEST 4
         start = System.currentTimeMillis();
-        int[][] matrixByUsualTransposed = MatrixMultiplicationInt.multiplyTransposed(a, b);
+        int[][] matrixByUsualTransposed = IntMatrixMultiplication.multiplyTransposed(a, b);
         end = System.currentTimeMillis();
         System.out.printf("Usual Multiply Transposed [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
         //****************************************

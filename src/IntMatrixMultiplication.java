@@ -7,17 +7,17 @@
  * @author Evgeny Usov
  * @author Alexey Falko
  */
-public class MatrixMultiplicationDouble {
+public class IntMatrixMultiplication {
 
     //******************************************************************************************
 
-    public static double[][] multiply(double[][] a, double[][] b) {
+    public static int[][] multiply(int[][] a, int[][] b) {
 
         int rowsA = a.length;
         int columnsB = b[0].length;
         int columnsA_rowsB = a[0].length;
 
-        double[][] c = new double[rowsA][columnsB];
+        int[][] c = new int[rowsA][columnsB];
 
         for (int i = 0; i < rowsA; i++) {
             for (int j = 0; j < columnsB; j++) {
@@ -34,14 +34,14 @@ public class MatrixMultiplicationDouble {
 
     //******************************************************************************************
 
-    public static double[][] multiplyTransposed(double[][] a, double[][] b) {
+    public static int[][] multiplyTransposed(int[][] a, int[][] b) {
 
         int rowsA = a.length;
         int columnsB = b[0].length;
         int columnsA_rowsB = a[0].length;
 
-        double[] columnB = new double[columnsA_rowsB];
-        double[][] c = new double[rowsA][columnsB];
+        int columnB[] = new int[columnsA_rowsB];
+        int[][] c = new int[rowsA][columnsB];
 
 
         for (int j = 0; j < columnsB; j++) {
@@ -50,7 +50,7 @@ public class MatrixMultiplicationDouble {
             }
 
             for (int i = 0; i < rowsA; i++) {
-                double[] rowA = a[i];
+                int rowA[] = a[i];
                 int sum = 0;
                 for (int k = 0; k < columnsA_rowsB; k++) {
                     sum += rowA[k] * columnB[k];
@@ -61,4 +61,5 @@ public class MatrixMultiplicationDouble {
 
         return c;
     }
+
 }

@@ -62,7 +62,7 @@ public class DoubleAlgorithmsTest {
         //****************************************
         //	TEST 3
         start = System.currentTimeMillis();
-        double[][] matrixByUsual = MatrixMultiplicationDouble.multiply(a, b);
+        double[][] matrixByUsual = DoubleMatrixMultiplication.multiply(a, b);
         end = System.currentTimeMillis();
         System.out.printf("Usual Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
         //****************************************
@@ -70,7 +70,7 @@ public class DoubleAlgorithmsTest {
         //****************************************
         //	TEST 4
         start = System.currentTimeMillis();
-        double[][] matrixByUsualTransposed = MatrixMultiplicationDouble.multiplyTransposed(a, b);
+        double[][] matrixByUsualTransposed = DoubleMatrixMultiplication.multiplyTransposed(a, b);
         end = System.currentTimeMillis();
         System.out.printf("Usual Multiply Transposed [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
         //****************************************

@@ -123,7 +123,7 @@ public class IntStrassen {
         @Override
         protected int[][] compute() {
             if (n <= 128) {
-                return MatrixMultiplicationInt.multiplyTransposed(a, b);
+                return IntMatrixMultiplication.multiplyTransposed(a, b);
             }
 
             n >>= 1;
@@ -199,7 +199,7 @@ public class IntStrassen {
      * */
     public static int[][] multiStrassen(int[][] a, int[][] b, int n) {
         if (n <= 128) {
-            return MatrixMultiplicationInt.multiplyTransposed(a, b);
+            return IntMatrixMultiplication.multiplyTransposed(a, b);
         }
 
         n = n >> 1;
