@@ -177,16 +177,12 @@ public class DoubleStrassen {
 
     //******************************************************************************************
 
-    public static double[][] multiStrassenForkJoin(double[][] a, double[][] b) {
-        int size = CommonFunctions.getNewDimension(a.length, a[0].length, b[0].length);
-        double[][] a_n = addition2SquareMatrix(a, size);
-        double[][] b_n = addition2SquareMatrix(b, size);
-
-        myRecursiveTask task = new myRecursiveTask(a_n, b_n, size);
+    public static double[][] multiStrassenForkJoin(double[][] a, double[][] b, int size) {
+        myRecursiveTask task = new myRecursiveTask(a, b, size);
         ForkJoinPool pool = new ForkJoinPool();
         double[][] fastFJ = pool.invoke(task);
 
-        return getSubmatrix(fastFJ, a.length, b[0].length);
+        return fastFJ;
     }
 
     //******************************************************************************************

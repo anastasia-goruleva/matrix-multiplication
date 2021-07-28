@@ -36,10 +36,12 @@ public class DoubleAlgorithmsTest {
         double[][] b = randomMatrix(l, m);
         long start, end;
 
+        int size = CommonFunctions.getNewDimension(n, l, m);
+
         //****************************************
         //	TEST 1
         start = System.currentTimeMillis();
-        double[][] matrixByStrassenFJ = DoubleStrassen.multiStrassenForkJoin(a, b);
+        double[][] matrixByStrassenFJ = DoubleStrassen.multiStrassenForkJoin(a, b, size);
         end = System.currentTimeMillis();
         System.out.printf("Strassen Fork-Join Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
         //****************************************
@@ -47,13 +49,8 @@ public class DoubleAlgorithmsTest {
         //****************************************
         //	TEST 2
         start = System.currentTimeMillis();
-        int size = CommonFunctions.getNewDimension(n, l, m);
 
-        double[][] a_n = DoubleStrassen.addition2SquareMatrix(a, size);
-        double[][] b_n = DoubleStrassen.addition2SquareMatrix(b, size);
-
-        double[][] temp = DoubleStrassen.multiStrassen(a_n, b_n, size);
-        double[][] matrixByStrassen = DoubleStrassen.getSubmatrix(temp, n, m);
+        double[][] matrixByStrassen = DoubleStrassen.multiStrassen(a, b, size);
         end = System.currentTimeMillis();
         System.out.printf("Strassen Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
         //****************************************

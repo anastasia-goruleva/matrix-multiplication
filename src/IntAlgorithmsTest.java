@@ -33,15 +33,16 @@ public class IntAlgorithmsTest {
 
 
     public static void test(int n, int m, int l) {
-
         int[][] a = randomMatrix(n, l);
         int[][] b = randomMatrix(l, m);
         long start, end;
 
+        int size = CommonFunctions.getNewDimension(n, l, m);
+
         //****************************************
         //	TEST 1
         start = System.currentTimeMillis();
-        int[][] matrixByStrassenFJ = IntStrassen.multiStrassenForkJoin(a, b);
+        int[][] matrixByStrassenFJ = IntStrassen.multiStrassenForkJoin(a, b, size);
         end = System.currentTimeMillis();
         System.out.printf("Strassen Fork-Join Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
         //****************************************
@@ -49,13 +50,8 @@ public class IntAlgorithmsTest {
         //****************************************
         //	TEST 2
         start = System.currentTimeMillis();
-        int size = CommonFunctions.getNewDimension(n, l, m);
 
-        int[][] a_n = IntStrassen.addition2SquareMatrix(a, size);
-        int[][] b_n = IntStrassen.addition2SquareMatrix(b, size);
-
-        int[][] temp = IntStrassen.multiStrassen(a_n, b_n, size);
-        int[][] matrixByStrassen = IntStrassen.getSubmatrix(temp, n, m);
+        int[][] matrixByStrassen = IntStrassen.multiStrassen(a, b, size);
         end = System.currentTimeMillis();
         System.out.printf("Strassen Multiply [A:%dx%d; B:%dx%d]: \tElapsed: %dms\n", n, l, l, m, end - start);
         //****************************************

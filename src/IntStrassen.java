@@ -175,16 +175,12 @@ public class IntStrassen {
 
     //******************************************************************************************
 
-    public static int[][] multiStrassenForkJoin(int[][] a, int[][] b) {
-        int size = CommonFunctions.getNewDimension(a.length, a[0].length, b[0].length);
-        int[][] a_n = addition2SquareMatrix(a, size);
-        int[][] b_n = addition2SquareMatrix(b, size);
-
-        myRecursiveTask task = new myRecursiveTask(a_n, b_n, size);
+    public static int[][] multiStrassenForkJoin(int[][] a, int[][] b, int size) {
+        myRecursiveTask task = new myRecursiveTask(a, b, size);
         ForkJoinPool pool = new ForkJoinPool();
         int[][] fastFJ = pool.invoke(task);
 
-        return getSubmatrix(fastFJ, a.length, b[0].length);
+        return fastFJ;
     }
 
     //******************************************************************************************
