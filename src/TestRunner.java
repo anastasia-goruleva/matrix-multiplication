@@ -1,8 +1,4 @@
 public class TestRunner {
-    private static boolean isTwoPower(int n) {
-        return n > 0 && (n & (n - 1)) == 0;
-    }
-
     private static class InvalidArgumentException extends RuntimeException {
         public InvalidArgumentException() {
         }
@@ -15,17 +11,17 @@ public class TestRunner {
     public static void main(String[] args) {
         try {
             int size = Integer.parseInt(args[0]);
-            if (!isTwoPower(size)) {
+            if (!CommonFunctions.isTwoPower(size)) {
                 throw new InvalidArgumentException("Size is not power of two");
             }
 
             switch (args[1].toLowerCase()) {
                 case "int":
-                    MatrixMultiplicationInt.test(size, size, size);
+                    IntAlgorithmsTest.test(size, size, size);
                     break;
 
                 case "double":
-                    MatrixMultiplicationDouble.test(size, size, size);
+                    DoubleAlgorithmsTest.test(size, size, size);
                     break;
 
                 default:
