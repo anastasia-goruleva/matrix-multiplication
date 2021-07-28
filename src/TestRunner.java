@@ -1,4 +1,4 @@
-public class StrassenRunner {
+public class TestRunner {
     private static boolean isTwoPower(int n) {
         return n > 0 && (n & (n - 1)) == 0;
     }
